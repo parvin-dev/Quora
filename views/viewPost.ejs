@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>View Post - Quora</title>
+
+    <link rel="stylesheet" href="/viewPost.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <div class="logo">
+            Quora
+        </div>
+
+        <button class="back-btn" onclick="window.location.href='/posts'">
+            ← Back
+        </button>
+
+    </header>
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <div class="post-card">
+
+            <div class="author">
+
+                <div class="profile">
+                    <%= detail.author[0] %>
+                </div>
+
+                <div class="author-info">
+                    <h3> <%= detail.author %></h3>
+                    <p>Post</p>
+                </div>
+
+            </div>
+
+
+            <div class="post-content">
+
+                <h1>
+                    <%= detail.question %>
+                </h1>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

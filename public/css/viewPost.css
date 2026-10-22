@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+
+    background-color: #f7f7f7;
+
+    color: #282829;
+}
+
+
+/* Header */
+
+.header {
+    height: 65px;
+
+    background-color: white;
+
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 80px;
+
+    position: sticky;
+    top: 0;
+}
+
+
+.logo {
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: #b92b27;
+}
+
+
+.back-btn {
+    background-color: #f1f1f1;
+
+    color: #333;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+
+.back-btn:hover {
+    background-color: #ddd;
+}
+
+
+/* Main */
+
+.main {
+    width: 700px;
+
+    margin: 50px auto;
+}
+
+
+/* Post Card */
+
+.post-card {
+    background-color: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    padding: 30px;
+}
+
+
+/* Author */
+
+.author {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+.profile {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background-color: #b92b27;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.author-info h3 {
+    font-size: 17px;
+
+    margin-bottom: 5px;
+}
+
+
+.author-info p {
+    font-size: 13px;
+
+    color: #777;
+}
+
+
+/* Post Content */
+
+.post-content {
+    padding-top: 30px;
+}
+
+
+.post-content h1 {
+    font-size: 26px;
+
+    line-height: 1.4;
+
+    margin-bottom: 20px;
+}
+
+
+.post-content p {
+    font-size: 16px;
+
+    color: #555;
+
+    line-height: 1.7;
+}
+
+
+/* Responsive */
+
+@media (max-width: 750px) {
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .main {
+        width: 90%;
+    }
+
+}

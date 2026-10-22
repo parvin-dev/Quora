@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "author": "Alex Johnson",
+        "question": "What is the best way to learn programming?"
+    },
+    {
+        "id": 4,
+        "author": "John Smith",
+        "question": "What is the difference between frontend and backend development?"
+    },
+    {
+        "id": 5,
+        "author": "Priya Das",
+        "question": "How long does it take to learn JavaScript?"
+    },
+    {
+        "id": 6,
+        "author": "Sumit",
+        "question": "How to learn web dev?"
+    },
+    {
+        "id": 7,
+        "author": "Shapnom Parvin",
+        "question": "How to learn Backend?"
+    },
+    {
+        "id": 8,
+        "author": "Mona ",
+        "question": "Easy Way To Learn DSA?"
+    },
+    {
+        "id": 9,
+        "author": "Shreya",
+        "question": "What topic i learn in C++?"
+    },
+    {
+        "id": 10,
+        "author": "Ron",
+        "question": "Is Web Dev is Dead?"
+    },
+    {
+        "id": 11,
+        "author": "Sk Ali",
+        "question": "Is 2026 B.tech worh it?"
+    },
+    {
+        "id": 12,
+        "author": "Sabina",
+        "question": "In New Town near xerox shop ?"
+    }
+]

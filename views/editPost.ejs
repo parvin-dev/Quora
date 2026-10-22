@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Post - Quora</title>
+
+    <link rel="stylesheet" href="/editPost.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <div class="logo">
+            Quora
+        </div>
+
+        <button class="back-btn" onclick="window.location.href='/posts'">
+            ← Back
+        </button>
+
+    </header>
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <div class="form-card">
+
+            <h2>Edit Post</h2>
+
+            <form method="post" action="/posts/<%= detail.id%>?_method=patch">
+
+                <div class="form-group">
+
+                    <label for="author">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="author"
+                        name="author"
+                        value="<%= detail.author %>"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="question">
+                        Question
+                    </label>
+
+                    <textarea
+                        id="question"
+                        name="question"
+                        rows="6"
+                    ><%= detail.question %></textarea>
+
+                </div>
+
+
+                <button type="submit" class="update-btn">
+                    Update Post
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

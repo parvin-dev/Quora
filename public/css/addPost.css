@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+
+    background-color: #f7f7f7;
+
+    color: #282829;
+}
+
+
+/* Header */
+
+.header {
+    height: 65px;
+
+    background-color: white;
+
+    border-bottom: 1px solid #ddd;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 80px;
+
+    position: sticky;
+
+    top: 0;
+}
+
+
+.logo {
+    font-size: 32px;
+
+    font-weight: bold;
+
+    color: #b92b27;
+}
+
+
+.back-btn {
+    background-color: #f1f1f1;
+
+    color: #333;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+
+.back-btn:hover {
+    background-color: #ddd;
+}
+
+
+/* Main */
+
+.main {
+    width: 600px;
+
+    margin: 50px auto;
+}
+
+
+/* Form Card */
+
+.form-card {
+    background-color: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    padding: 30px;
+}
+
+
+.form-card h2 {
+    font-size: 24px;
+
+    margin-bottom: 25px;
+}
+
+
+/* Form */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+    display: block;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #b92b27;
+}
+
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* Add Button */
+
+.add-btn {
+    width: 100%;
+
+    background-color: #b92b27;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 5px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+.add-btn:hover {
+    background-color: #8f211e;
+}
+
+
+/* Responsive */
+
+@media (max-width: 650px) {
+
+    .header {
+        padding: 0 20px;
+    }
+
+    .main {
+        width: 90%;
+    }
+
+}
