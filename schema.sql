@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS quora_app;
+
+USE quora_app;
+
+CREATE TABLE IF NOT EXISTS posts (
+    id VARCHAR(36) PRIMARY KEY,
+    author VARCHAR(100) NOT NULL,
+    question TEXT NOT NULL
+);

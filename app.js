@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
-const fs = require("fs");
+const mysql = require('mysql2');
+require('dotenv').config()
 const methodOverride = require('method-override');
+const { faker } = require('@faker-js/faker');
 
 const app = express();
 const port = 8080;
@@ -16,86 +18,136 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended:true}));
 // app.use(express.json());
 //----------------------------------------------------------------------
-
-const data = require("./data.json");
-
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  database: 'quora_app',
+  password: process.env.DB_PASSWORD
+});
+//-----------------------------------------------------------------------
 app.get("/",(req,res)=>{
-    res.render("index.ejs",{data});
+    let q = "SELECT * FROM posts";
+    connection.query(q,(err,data)=>{
+        if (err) {
+           console.error(err);
+           return res.status(500).send("Database error");
+        }
+
+        res.render("index.ejs", { data });
+    })
 });
 
 app.get("/posts",(req,res)=>{
-    res.render("index.ejs",{data});
+    let q = "SELECT * FROM posts";
+    connection.query(q,(err,data)=>{
+        if (err) {
+           console.error(err);
+           return res.status(500).send("Database error");
+        }
+
+        res.render("index.ejs", { data });
+    })
 });
 
 app.get("/posts/new",(req,res)=>{
     res.render("addPost.ejs");
 });
 
+
 app.post("/posts",(req,res)=>{
     let {author,question} =req.body;
+    let id = faker.string.uuid();
 
-    let newPost = {
-        id: data.length +1,
-        author: author,
-        question: question
-    }
-
-    data.push(newPost);
-
-    fs.writeFileSync(
-       "./data.json",
-       JSON.stringify(data,null,4)
-    );
-
-    console.log("Post added");
-
-    res.redirect("/posts");
+    let insertQuery = "INSERT INTO posts (id,author,question) VALUES (?,?,?)";
+    let u = [id,author,question];
+    
+    connection.query(insertQuery,u,(err,data)=>{
+        if (err) {
+           console.error(err);
+           return res.status(500).send("Database error");
+        };
+        console.log("Post added");
+        res.redirect("/posts");
+    })
 });
 
 app.get("/posts/:id",(req,res)=>{
      let {id} = req.params;
-     let detail = data.find((curr) => curr.id==id);
-     res.render("viewPost.ejs",{detail});
+     let q = "SELECT * FROM posts WHERE id = ?";
+     connection.query(q, [id], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Database error");
+        }
+
+        if (data.length === 0) {
+            return res.status(404).send("Post not found");
+        }
+
+        let detail = data[0];
+
+        res.render("viewPost.ejs", { detail });
+    });
 });
 
 app.get("/posts/:id/edit",(req,res)=>{
      let {id} = req.params;
-     let detail = data.find((curr) => curr.id==id);
-     res.render("editPost.ejs",{detail});
+     let q = "SELECT * FROM posts WHERE id = ?";
+     connection.query(q, [id], (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Database error");
+        }
+
+        if (data.length === 0) {
+            return res.status(404).send("Post not found");
+        }
+
+        let detail = data[0];
+
+        res.render("editPost.ejs",{detail});
+    });
 });
 
-app.patch("/posts/:id",(req,res)=>{
-      let {id} = req.params;
-      let detail = data.find((curr) => curr.id==id);
+app.patch("/posts/:id", (req, res) => {
+    let { id } = req.params;
+    let newContent = req.body.question;
 
-      let newContent = req.body.question;
-      detail.question=newContent;
+    let q = "UPDATE posts SET question = ? WHERE id = ?";
 
-      fs.writeFileSync(
-        "./data.json",
-        JSON.stringify(data, null, 4)
-      );
+    connection.query(q, [newContent, id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Database error");
+        }
 
-      res.redirect("/posts");
+        if (result.affectedRows === 0) {
+            return res.status(404).send("Post not found");
+        }
+
+        res.redirect("/posts");
+    });
 });
 
 app.delete("/posts/:id", (req, res) => {
-
     let { id } = req.params;
 
-    let index = data.findIndex((curr) => curr.id == id);
+    let q = "DELETE FROM posts WHERE id = ?";
 
-    data.splice(index, 1);
+    connection.query(q, [id], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Database error");
+        }
 
-    fs.writeFileSync(
-        "./data.json",
-        JSON.stringify(data, null, 4)
-    );
+        if (result.affectedRows === 0) {
+            return res.status(404).send("Post not found");
+        }
 
-    res.redirect("/posts");
+        res.redirect("/posts");
+    });
 });
 
 app.listen(port,()=>{
    console.log("app listening..");
 });
-
