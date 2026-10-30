@@ -24,10 +24,6 @@ Open `http://localhost:8080` in your browser (use the port configured in `app.js
 
 ## Future Improvements
 - MySQL database integration
-- User authentication and authorization
-- Search, filtering, and pagination
-- Comments, likes, and image uploads
-- Caching and automated testing
 
 ## Author
 [Parvin](https://github.com/parvin-dev)
